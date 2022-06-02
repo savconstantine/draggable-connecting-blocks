@@ -2,7 +2,6 @@
 
 ## Project Description
 
-### EN
 Create several blocks and implement the following functionality on the page:
 
 1. Move the blocks on the page using the cursor by clicking on the blue body.
@@ -13,20 +12,6 @@ Create several blocks and implement the following functionality on the page:
 
 Required technologies: Vue.js
 Optional: Vuex
-
-
-### RU
-На странице нужно создать несколько блоков и  реализовать следующую функциональность:
-
-1. Передвигать блоки по странице с помощью курсора кликнув на синее тело.
-2. Добавлять связи «линии» между блоками. Добавление линий происходит так: клик на узел блока 1,  клик на узел блока 2.  (два узла должны соединиться линией)
-3. (при передвижении блока, линии должны   тоже должны передвигаться) линии могут быть прямыми (не гибкими)
-
-! Бонусное задание возможность добавить \  удалять блоки \ связи.  
-
-
-Требуемые технологии: Vue.js
-Опционально: Vuex 
 
 
 ## Project setup
@@ -48,6 +33,3 @@ npm run build
 ```
 npm run lint
 ```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
