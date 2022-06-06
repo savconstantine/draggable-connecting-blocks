@@ -28,8 +28,8 @@
               v-bind:key="'line' + indexLine"/>
       <line v-if="lineCreating.status === true" :x1="lineCreating.x1" :y1="lineCreating.y1" :x2="lineCreating.x2" :y2="lineCreating.y2" stroke="black"/>
     </svg>
-    <button v-if="lineCreating.status === true" class="button red" @click="cancelLineCreating()">Отменить связь</button>
-    <button v-else class="button" @click="addBlock()">Добавить блок</button>
+    <button v-if="lineCreating.status === true" class="button red" @click="cancelLineCreating()">Cancel connection creation</button>
+    <button v-else class="button" @click="addBlock()">Add New Block</button>
   </div>
 </template>
 
