@@ -200,7 +200,8 @@
           },
         }
 
-        this.$set(this.blocks, newBlockObj.id, newBlockObj);
+        
+        this.blocks[newBlockObj.id] = newBlockObj
 
       },
       cancelLineCreating() {
@@ -252,7 +253,7 @@
             ...this.lineCreating.prepLine,
           }
 
-          this.$set(this.lines, newLineObj.id, newLineObj);
+          this.lines[newLineObj.id] = newLineObj
           this.lineCreating.x1 = 0;
           this.lineCreating.y1 = 0;
           this.lineCreating.x2 = 0;
