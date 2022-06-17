@@ -1,4 +1,6 @@
-# konstantin-draggable-connecting-blocks
+# draggable-connecting-blocks
+
+https://savconstantine.github.io/draggable-connecting-blocks/
 
 ## Project Description
 
