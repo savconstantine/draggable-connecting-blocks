@@ -6,8 +6,8 @@
     "serve": "vue-cli-service serve",
     "build": "vue-cli-service build",
     "lint": "vue-cli-service lint",
-    "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "predeploy": "NODE_ENV=production npm run build",
+    "deploy": "npm run predeploy && gh-pages -d dist"
   },
   "dependencies": {
     "core-js": "^3.22.8",
