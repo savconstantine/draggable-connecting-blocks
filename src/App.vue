@@ -161,7 +161,7 @@
     },
     methods: {
       removeLine(lineID) {
-        this.$delete(this.lines, lineID);
+        delete this.lines[lineID];
       },
       removeBlock(blockID) {
         let lines = this.lines;
@@ -169,10 +169,10 @@
 
         Object.keys(lines).map(key => lines[key]).filter(function(elem){
           if(elem.start.blockID == blockID || elem.end.blockID == blockID) {
-            self.$delete(self.lines, elem.id)
+            delete self.lines[elem.id];
           }
         });
-        this.$delete(this.blocks, blockID);
+        delete this.blocks[blockID];
       },
       addBlock() {
         let min = 0;
