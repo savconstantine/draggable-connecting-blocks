@@ -8,10 +8,15 @@
             v-bind:key="'dragBlock' + blockIndex"
     >
       <div class="innerElement">
-        <div class="host topHost" :ref="'topHost' + blockIndex" @click="setLine( blockIndex, 'topHost')"></div>
-        <div class="host rightHost" :ref="'rightHost' + blockIndex" @click="setLine(blockIndex, 'rightHost')"></div>
-        <div class="host bottomHost" :ref="'bottomHost' + blockIndex" @click="setLine(blockIndex, 'bottomHost')"></div>
-        <div class="host leftHost" :ref="'leftHost' + blockIndex" @click="setLine(blockIndex, 'leftHost')"></div>
+        <div 
+            v-for="(lineHost, lineHostIndex) in lineHosts" 
+            :key="'lineHost' + blockIndex + '_' + lineHostIndex" 
+            class="host " 
+            :class="lineHost + 'Host'"
+            :ref="lineHost + 'Host' + blockIndex"
+            @click="setLine( blockIndex, 'topHost')">
+            </div>
+            
         <div class="remove-area" v-if="lineCreating.status === false"><img @click="removeBlock(blockIndex)" src="./assets/delete.svg"></div>
       </div>
     </DragBlock>
@@ -28,6 +33,7 @@
               v-bind:key="'line' + indexLine"/>
       <line v-if="lineCreating.status === true" :x1="lineCreating.x1" :y1="lineCreating.y1" :x2="lineCreating.x2" :y2="lineCreating.y2" stroke="black"/>
     </svg>
+
     <button v-if="lineCreating.status === true" class="button red" @click="cancelLineCreating()">Cancel connection creation</button>
     <button v-else class="button" @click="addBlock()">Add New Block</button>
   </div>
@@ -36,13 +42,20 @@
 <script>
   import DragBlock from './components/DragBlock.vue'
 
+
   export default {
     name: 'App',
     components: {
-      DragBlock
+    DragBlock,
     },
     data() {
       return {
+        lineHosts: [
+            'top',
+            'right',
+            'bottom',
+            'left'
+        ],
         lineCreating: {
           status: false,
           x1: 0,
