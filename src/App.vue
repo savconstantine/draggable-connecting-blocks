@@ -167,6 +167,7 @@
     computed: {
     },
     mounted() {
+      Object.keys(this.blocks).forEach(element => this.updateHostCoordinatesByBlockID(element));
     },
     destroyed: function() {
       window.removeEventListener('mousemove', this.mouseIsMoving);
