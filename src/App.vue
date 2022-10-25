@@ -8,15 +8,14 @@
             v-bind:key="'dragBlock' + blockIndex"
     >
       <div class="innerElement">
-        <div 
-            v-for="(lineHost, lineHostIndex) in lineHosts" 
-            :key="'lineHost' + blockIndex + '_' + lineHostIndex" 
-            class="host " 
+        <div
+            v-for="(lineHost, lineHostIndex) in lineHosts"
+            :key="'lineHost' + blockIndex + '_' + lineHostIndex"
+            class="host "
             :class="lineHost + 'Host'"
             :ref="lineHost + 'Host' + blockIndex"
-            @click="setLine( blockIndex, 'topHost')">
+            @click="setLine( blockIndex, lineHost + 'Host')">
             </div>
-            
         <div class="remove-area" v-if="lineCreating.status === false"><img @click="removeBlock(blockIndex)" src="./assets/delete.svg"></div>
       </div>
     </DragBlock>
