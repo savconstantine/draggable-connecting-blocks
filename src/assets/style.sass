@@ -1,3 +1,9 @@
+*, *::before, *::after
+  box-sizing: border-box
+  margin: 0
+  position: relative
+  font-weight: normal
+
 #app
   font-family: Avenir, Helvetica, Arial, sans-serif
   -webkit-font-smoothing: antialiased
@@ -5,8 +11,10 @@
   text-align: center
   color: #2c3e50
   background: #C6DCE2
-  width: 800px
-  height: 800px
+  width: 5000px
+  height: 5000px
+
+#main
   .drag-block
     position: absolute
     top: 0
@@ -17,6 +25,8 @@
     height: 100px
     border-radius: 20px
     cursor: grab
+    .innerElement
+      position: unset
     .host
       width: 30px
       height: 30px

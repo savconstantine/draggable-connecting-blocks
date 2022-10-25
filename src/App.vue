@@ -1,5 +1,5 @@
 <template>
-  <div id="app">
+  <div id="main">
     <DragBlock
             v-for="(block, blockIndex) in blocks"
             :top-prop="block.topProp"
@@ -21,7 +21,7 @@
       </div>
     </DragBlock>
 
-    <svg style="width: 100%; height: 100%" width="500" height="500">
+    <svg style="width: 100%; height: 100%" width="5000" height="5000">
       <line
               class="line"
               v-for="(line,indexLine) in lines"
@@ -275,11 +275,11 @@
         }
       },
       getPos(el) {
-
-        for (var lx=0, ly=0;
+        let lx=0, ly=0
+        for (lx=0, ly=0;
              el != null;
              lx += el.offsetLeft, ly += el.offsetTop, el = el.offsetParent);
-        return {x: lx,y: ly};
+        return {x: lx + 15,y: ly + 15};
       },
       updateHostCoordinatesByBlockID(blockID) {
         this.blocks[blockID]['topHost'] = this.getPos(this.$refs['topHost' + blockID][0]);
