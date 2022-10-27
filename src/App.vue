@@ -4,7 +4,8 @@
             v-for="(block, blockIndex) in blocks"
             :top-prop="block.topProp"
             :left-prop="block.leftProp"
-            @dragging="handleDragging(blockIndex)"
+            :block-prop="block"
+            @emitDragging="handleDragging"
             v-bind:key="'dragBlock' + blockIndex"
     >
       <div class="innerElement">
@@ -49,6 +50,7 @@
     },
     data() {
       return {
+        timeOut: 0,
         lineHosts: [
             'top',
             'right',
@@ -72,99 +74,14 @@
             }
           }
         },
-        blocks: {
-          1 : {
-            id: 1,
-            topProp: 123,
-            leftProp: 245,
-            topHost: {
-              x: 280,
-              y: 108,
-            },
-            rightHost: {
-              x: 330,
-              y: 158,
-            },
-            bottomHost: {
-              x: 280,
-              y: 208,
-            },
-            leftHost: {
-              x: 230,
-              y: 158,
-            },
-          },
-
-          2 : {
-            id: 2,
-            topProp: 323,
-            leftProp: 234,
-            topHost: {
-              x: 269,
-              y: 308,
-            },
-            rightHost: {
-              x: 319,
-              y: 358,
-            },
-            bottomHost: {
-              x: 269,
-              y: 408,
-            },
-            leftHost: {
-              x: 219,
-              y: 358,
-            },
-          },
-          3 : {
-            id: 3,
-            topProp: 0,
-            leftProp: 0,
-            topHost: {
-              x: 35,
-              y: -15,
-            },
-            rightHost: {
-              x: 85,
-              y: 35,
-            },
-            bottomHost: {
-              x: 35,
-              y: 85,
-            },
-            leftHost: {
-              x: -15,
-              y: 35,
-            },
-          },
-        },
-        lines: {
-          1 : {
-            id: 1,
-            start: {
-              blockID : 3,
-              host: 'bottomHost',
-            },
-            end : {
-              blockID : 2,
-              host: 'leftHost',
-            }
-          },
-          2 : {
-            id: 2,
-            start: {
-              blockID : 1,
-              host: 'bottomHost',
-            },
-            end : {
-              blockID : 2,
-              host: 'topHost',
-            }
-          }
-        }
+        blocks: {},
+        lines: {}
       }
     },
-    computed: {
+    computed: {},
+    beforeMount() {
+      this.blocks = this.$store.state.blocks
+      this.lines = this.$store.state.lines
     },
     mounted() {
       Object.keys(this.blocks).forEach(element => this.updateHostCoordinatesByBlockID(element));
@@ -213,7 +130,6 @@
           },
         }
 
-        
         this.blocks[newBlockObj.id] = newBlockObj
 
       },
@@ -287,9 +203,17 @@
         this.blocks[blockID]['bottomHost'] = this.getPos(this.$refs['bottomHost' + blockID][0]);
         this.blocks[blockID]['leftHost'] = this.getPos(this.$refs['leftHost' + blockID][0]);
       },
+      handleDragging(block, left, top) {
+        block.leftProp = left
+        block.topProp = top
 
-      handleDragging(blockIndex) {
-        this.updateHostCoordinatesByBlockID(blockIndex);
+        this.updateHostCoordinatesByBlockID(block.id);
+
+        clearTimeout(this.timeOut);
+
+        this.timeOut = setTimeout(() => {
+          this.$store.commit('updateBlocksAndLines', { blocks: this.blocks, lines: this.lines });
+        }, 1000);
       },
 
     }

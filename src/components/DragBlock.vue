@@ -20,6 +20,12 @@
         type: Number,
         default: 0
       },
+      blockProp: {
+        type: Object,
+        default: function() {
+          return {}
+        }
+      }
     },
     data() {
       return {
@@ -36,7 +42,6 @@
     },
     methods: {
       elementMove(e) {
-        this.$emit('dragging');
         e.preventDefault();
 
         const x = e.pageX;
@@ -63,6 +68,7 @@
         this.left = newLeft;
         this.element.style.top = `${newTop}px`;
         this.top = newTop;
+        this.$emit('emitDragging', this.blockProp, this.left, this.top);
       },
       drag(e) {
         this.parent.width = this.parentWidth || this.element.parentNode.offsetWidth;
