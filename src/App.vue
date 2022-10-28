@@ -2,8 +2,6 @@
   <div id="main">
     <DragBlock
             v-for="(block, blockIndex) in blocks"
-            :top-prop="block.topProp"
-            :left-prop="block.leftProp"
             :block-prop="block"
             @emitDragging="handleDragging"
             v-bind:key="'dragBlock' + blockIndex"

@@ -12,19 +12,9 @@
   export default {
     name: 'DragBlock',
     props: {
-      topProp: {
-        type: Number,
-        default: 0
-      },
-      leftProp: {
-        type: Number,
-        default: 0
-      },
       blockProp: {
         type: Object,
-        default: function() {
-          return {}
-        }
+        default: () => ({})
       }
     },
     data() {
@@ -88,11 +78,10 @@
     },
     mounted() {
       this.element = this.$el;
-      this.element.style.left = `${this.leftProp}px`;
-      this.left = this.leftProp;
-      this.element.style.top = `${this.topProp}px`;
-      this.top = this.topProp;
-
+      this.element.style.left = `${this.blockProp.leftProp}px`;
+      this.left = this.blockProp.leftProp;
+      this.element.style.top = `${this.blockProp.topProp}px`;
+      this.top = this.blockProp.topProp;
     },
   };
 </script>
