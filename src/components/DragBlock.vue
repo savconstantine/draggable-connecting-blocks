@@ -58,7 +58,7 @@
         this.left = newLeft;
         this.element.style.top = `${newTop}px`;
         this.top = newTop;
-        this.$emit('emitDragging', this.blockProp, this.left, this.top);
+        this.$emit('emitDragging', this.blockProp.id, this.left, this.top);
       },
       drag(e) {
         this.parent.width = this.parentWidth || this.element.parentNode.offsetWidth;

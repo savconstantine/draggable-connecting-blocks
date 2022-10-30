@@ -44,14 +44,45 @@ const store = createStore({
       },
     },
   },
-  mutations: {
-    updateBlocksAndLines(state, { blocks, lines }) {
-      state.blocks = blocks;
-      state.lines = lines;
+  getters: {
+    getBlocks(state, getters) {
+      return getters.getDataByName("blocks");
+    },
+    getLines(state, getters) {
+      return getters.getDataByName("lines");
+    },
+    getDataByName: (state) => (name) => {
+      return state[name];
     },
   },
   actions: {},
+  mutations: {
+    addBlock(state, block) {
+      state.blocks = { ...state.blocks, [block.id]: block };
+    },
+    updateBlock(state, block) {
+      state.blocks[block.id] = block;
+    },
+    deleteBlock(state, blockID) {
+      let lines = state.lines;
+
+      Object.keys(lines)
+        .map((key) => lines[key])
+        .filter((elem) => {
+          if (elem.start.blockID == blockID || elem.end.blockID == blockID) {
+            delete state.lines[elem.id];
+          }
+        });
+      delete state.blocks[blockID];
+    },
+    addLine(state, line) {
+      state.lines = { ...state.lines, [line.id]: line };
+    },
+    deleteLine(state, lineID) {
+      delete state.lines[lineID];
+    }
+  },
   modules: {},
 });
 
-export default store
+export default store;
