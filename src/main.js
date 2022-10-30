@@ -12,3 +12,13 @@ createApp({
 })
   .use(store)
   .mount("#app");
+
+store.subscribe((mutation, state) => {
+  let store = {
+    version: state.version,
+    blocks: state.blocks,
+    lines: state.lines,
+  };
+
+  localStorage.setItem("store", JSON.stringify(store));
+});
