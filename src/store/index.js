@@ -1,7 +1,9 @@
 import { createStore } from 'vuex'
+import { version } from "../../package.json";
 
 const store = createStore({
   state: {
+    version: "1.0.0",
     blocks: {
       1: {
         id: 1,
@@ -57,6 +59,24 @@ const store = createStore({
   },
   actions: {},
   mutations: {
+    initializeStore(state) {
+      let store = localStorage.getItem("store");
+      if (store) {
+        try {
+          store = JSON.parse(store);
+
+          if (store.version == version) {
+            this.replaceState(Object.assign(state, store));
+          } else {
+            state.version = version;
+          }
+        } catch (e) {
+          console.error(e);
+        }
+      } else {
+        state.version = version;
+      }
+    },
     addBlock(state, block) {
       state.blocks = { ...state.blocks, [block.id]: block };
     },
