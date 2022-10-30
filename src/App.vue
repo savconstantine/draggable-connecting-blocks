@@ -37,7 +37,6 @@ export default {
   },
   data() {
     return {
-      timeOut: 0,
       lineHosts: [
         'top',
         'right',
@@ -198,12 +197,6 @@ export default {
       block.topProp = top
 
       this.updateHostCoordinatesByBlockID(block.id);
-
-      // clearTimeout(this.timeOut);
-
-      // this.timeOut = setTimeout(() => {
-      //   this.$store.commit('updateBlocksAndLines', { blocks: this.blocks, lines: this.lines });
-      // }, 1000);
     },
 
   }
