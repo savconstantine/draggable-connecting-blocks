@@ -1,6 +1,6 @@
 # draggable-connecting-blocks
 
-## demo - https://savconstantine.github.io/draggable-connecting-blocks/
+## Demo - https://savconstantine.github.io/draggable-connecting-blocks/
 
 -------
 
@@ -11,8 +11,18 @@
 3. (when moving the block, the lines must also move) the lines can be straight (not flexible)
 4. Possibility to add / remove blocks / links.
 
+## Features
+
+* Vue3
+* Vuex
+* Modern ES6 for using template strings, JSX syntax, object destructuring arrow functions and more
+* SASS/SCSS: make styles greate again, with no tears
+* TailwindCSS: utility-first CSS framework
+* Babel for old browser support
+* Hot Module Replacement for comfortable development
 
 ## Project setup
+### Installs the dependencies.
 ```
 npm install
 ```
