@@ -15,11 +15,11 @@
 
 * Vue3
 * Vuex
-* Modern ES6 for using template strings, JSX syntax, object destructuring arrow functions and more
 * SASS/SCSS: make styles greate again, with no tears
 * TailwindCSS: utility-first CSS framework
 * Babel for old browser support
 * Hot Module Replacement for comfortable development
+* Modern ES6 for using template strings, object destructuring arrow functions and more
 
 ## Project setup
 ### Installs the dependencies.
