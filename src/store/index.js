@@ -105,4 +105,21 @@ const store = createStore({
   modules: {},
 });
 
+let timeOut = 0;
+
+store.subscribe((mutation, state) => {
+  let store = {
+    version: state.version,
+    blocks: state.blocks,
+    lines: state.lines,
+  };
+
+  clearTimeout(timeOut);
+
+  timeOut = setTimeout(() => {
+    console.log("Saving store to localStorage");
+    localStorage.setItem("store", JSON.stringify(store));
+  }, 1000);
+});
+
 export default store;
