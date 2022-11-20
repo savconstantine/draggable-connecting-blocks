@@ -22,19 +22,17 @@
     </svg>
 
     <div data-dial-init class="fixed left-6 bottom-6 group">
-      <button v-if="lineCreating.status === true" @click="cancelLineCreating()" type="button" data-dial-toggle="speed-dial-menu-default" aria-controls="speed-dial-menu-default"
-        aria-expanded="false"
+      <button v-if="lineCreating.status === true" @click="cancelLineCreating()" type="button"
         class="flex justify-center items-center w-14 h-14 text-white bg-pink-700 rounded-full hover:bg-pink-800 dark:bg-pink-600 dark:hover:bg-pink-700 focus:ring-4 focus:ring-pink-300 focus:outline-none dark:focus:ring-pink-800 transition duration-500 hover:scale-125">
-        <svg aria-hidden="true" class="w-8 h-8 rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"
+        <svg class="w-8 h-8 rotate-45" fill="none" stroke="currentColor" viewBox="0 0 24 24"
           xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
         </svg>
       </button>
-      <button v-else @click="addBlock()" type="button" data-dial-toggle="speed-dial-menu-square" aria-controls="speed-dial-menu-square"
-        aria-expanded="false"
+      <button v-else @click="addBlock()" type="button"
         class="flex justify-center items-center w-14 h-14 text-white bg-blue-700 rounded-lg hover:bg-blue-800 dark:bg-blue-600 dark:hover:bg-blue-700 focus:ring-4 focus:ring-blue-300 focus:outline-none dark:focus:ring-blue-800 transition duration-500 hover:scale-125">
-        <svg aria-hidden="true" class="w-8 h-8 transition-transform " fill="none"
-          stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <svg class="w-8 h-8 transition-transform " fill="none" stroke="currentColor" viewBox="0 0 24 24"
+          xmlns="http://www.w3.org/2000/svg">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6v6m0 0v6m0-6h6m-6 0H6"></path>
         </svg>
       </button>
